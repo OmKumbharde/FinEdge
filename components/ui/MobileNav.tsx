@@ -15,6 +15,7 @@ import Link from 'next/link'
 import { sidebarLinks } from '@/constants'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
+import Footer from './Footer'
   
 
 const MobileNav = ({user}: MobileNavProps) => {
@@ -42,7 +43,7 @@ const MobileNav = ({user}: MobileNavProps) => {
                         
                     />
                     <h1
-                    className='text-26 font-ibm-plex-serif font-bold text-black-1'>Horizon</h1>
+                    className='text-26 font-ibm-plex-serif font-bold text-black-1'>FinEdge</h1>
                 </Link>
 
                 <div className='mobilenav-sheet'>
@@ -56,7 +57,7 @@ const MobileNav = ({user}: MobileNavProps) => {
                                 <SheetClose asChild key={item.route}>
 
                                     <Link href={item.route} key={item.label}
-                                        className={cn('mobilenav-sheet_close w-full', {'bg-bank-gradient': isActive})}    
+                                         className={cn('mobilenav-sheet_close w-full', {'bg-bank-gradient': isActive})}    
                                     >
                                         
                                             <Image
@@ -84,7 +85,7 @@ const MobileNav = ({user}: MobileNavProps) => {
                             USER
                         </nav>
                     </SheetClose>
-                    FOOTER
+                    <Footer user={user} type='mobile'/>
                 </div>
 
                 

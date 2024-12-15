@@ -24,12 +24,15 @@ import { Input } from "@/components/ui/input"
 import { authFormSchema } from "@/lib/utils"
 import { useRouter } from 'next/navigation';
 
+import { getLoggedInUser, signIn } from "@/lib/actions/user.actions";
+import { signUp } from '@/lib/actions/user.actions';
+
 
 
 
 
 const AuthForm = ({ type }: { type: string }) => {
-  const router = useRouter
+  const router = useRouter();
   const [user, setuser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -54,18 +57,18 @@ const AuthForm = ({ type }: { type: string }) => {
       // Sign up with Appwrite & create plaid token
 
       if(type === 'sign-up'){
-        // const newUser = await signUp(data);
+        const newUser = await signUp(data);
 
-        // setuser(newUser);
+        setuser(newUser);
       }
 
       if(type === 'sign-in'){
-      //   const response = await signIn({
-      //     email: data.email,
-      //     password: data.password,
-      //   })
+        const response = await signIn({
+          email: data.email,
+          password: data.password,
+        })
 
-      // if(response) router.push('/')
+        if(response) router.push('/')
 
       }
 
